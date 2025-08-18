@@ -1,0 +1,14 @@
+:root{
+  --card-radius: 1rem;
+}
+.card{
+  border: 0;
+  border-radius: var(--card-radius);
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+.navbar .nav-link.active{font-weight:600;}
+.badge-soft{
+  background: #eef2ff;
+  color: #3b5bdb;
+  border: 1px solid #dbe4ff;
+}

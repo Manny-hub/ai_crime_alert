@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upload Documents</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <label for="document">Select Document:</label>
+    <input type="file" name="document" required>
+    <br><br>
+    <button type="submit">Upload</button>
+</form>
+{% endblock %}

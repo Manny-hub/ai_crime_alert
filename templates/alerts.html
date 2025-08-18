@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Crime Alerts</h2>
+<ul>
+  {% for alert in alerts %}
+    <li>{{ alert[1] }} <small>({{ alert[2] }})</small></li>
+  {% else %}
+    <li>No alerts found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

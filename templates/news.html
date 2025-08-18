@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Latest Crime News{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+  <h2 class="mb-4 text-center">📰 Latest Crime News</h2>
+  <ul class="list-group">
+    {% for item in items %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <a href="{{ item.link }}" target="_blank" class="fw-bold text-decoration-none">
+            {{ item.title }}
+          </a>
+          <br>
+          <small class="text-muted">{{ item.published }}</small>
+        </div>
+        <span class="badge bg-primary">News</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
