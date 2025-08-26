@@ -5,19 +5,35 @@
 {% block content %}
 <div class="container my-4">
   <h2 class="mb-4 text-center">📰 Latest Crime News</h2>
-  <ul class="list-group">
+
+  <!-- Auto-refresh every 70s -->
+  <script>
+    setInterval(() => {
+      window.location.reload();
+    }, 70000); // refresh every 30 seconds
+  </script>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for item in items %}
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <a href="{{ item.link }}" target="_blank" class="fw-bold text-decoration-none">
-            {{ item.title }}
-          </a>
-          <br>
-          <small class="text-muted">{{ item.published }}</small>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{{ item.link }}" target="_blank" class="fw-bold text-decoration-none">
+              {{ item.title }}
+            </a>
+          </h5>
+          <p class="card-text">
+            {{ item.summary | safe | truncate(150) }}
+          </p>
         </div>
-        <span class="badge bg-primary">News</span>
-      </li>
+
+        <div class="card-footer text-muted">
+          {{ item.published }}
+        </div>
+      </div>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
 {% endblock %}

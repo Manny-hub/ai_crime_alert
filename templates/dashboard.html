@@ -1,11 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Dashboard · CivicGuard{% endblock %}
+{% block title %}Dashboard · AI Detect{% endblock %}
 {% block content %}
 <h1 class="h3 mb-4">Welcome, {{ user }} 👋</h1>
 
 <div class="row g-4">
-  <div class="col-md-4">
-    <div class="card p-3">
+  <!-- Alerts -->
+  <div class="col-md-6 d-flex">
+    <div class="card p-4 border-100">
       <div class="d-flex align-items-center">
         <div class="me-3"><i class="bi bi-bell display-6 text-primary"></i></div>
         <div>
@@ -16,8 +17,10 @@
       <a href="{{ url_for('alerts') }}" class="stretched-link"></a>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card p-3">
+
+  <!-- Report Issue -->
+  <div class="col-md-6 d-flex">
+    <div class="card p-4 border-100">
       <div class="d-flex align-items-center">
         <div class="me-3"><i class="bi bi-flag display-6 text-danger"></i></div>
         <div>
@@ -28,17 +31,39 @@
       <a href="{{ url_for('report_crime') }}" class="stretched-link"></a>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card p-3">
-      <div class="d-flex align-items-center">
+
+  <!-- Latest News -->
+  <div class="col-md-6 d-flex">
+    <div class="card p-4 border-100">
+      <div class="d-flex align-items-start">
         <div class="me-3"><i class="bi bi-newspaper display-6 text-success"></i></div>
-        <div>
+        <div class="flex-grow-1">
           <div class="text-muted small">Latest News</div>
           <div class="fs-6">Cyber & digital rights</div>
+          {% if news_preview %}
+            <ul class="list-unstyled mt-2">
+              {% for item in news_preview[:2] %} {# Only show 2 items #}
+                <li class="mb-2">
+                  <a href="{{ item.link }}" target="_blank" class="fw-bold text-decoration-none">
+                    {{ item.title }}
+                  </a>
+                  <br>
+                  <small class="text-muted">{{ item.published }}</small>
+                  {% if item.summary %}
+                    <div class="text-muted small text-truncate" style="max-width: 200px;">
+                      {{ item.summary }}
+                    </div>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="text-muted small">No news available.</div>
+          {% endif %}
         </div>
       </div>
       <a href="{{ url_for('news') }}" class="stretched-link"></a>
     </div>
   </div>
-</div>
+
 {% endblock %}
