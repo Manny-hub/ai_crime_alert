@@ -200,8 +200,6 @@ def delete_user(user_id):
     return redirect(url_for("manage_users"))
 
 
-
-# 👉 Add this here
 @app.route("/api/news")
 def api_news():
     items = get_news()
