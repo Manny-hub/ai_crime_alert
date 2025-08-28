@@ -1,6 +1,6 @@
 
 
-````markdown
+
 # AI Crime Alert System
 
 An AI-powered surveillance and alert system focused on ethical crime detection, cybersecurity, and public accountability—built as a final-year project to explore responsible AI deployment in public safety.
@@ -25,6 +25,8 @@ An AI-powered surveillance and alert system focused on ethical crime detection, 
   Keeps detailed logs of crime submissions and system activity, enabling transparency.
 
 ---
+
+````markdown
 
 ##  Project Structure
 
